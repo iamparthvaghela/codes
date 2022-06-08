@@ -1,40 +1,42 @@
-#include<bits/stdc++.h>
-using namespace std;
+// C program to find minimum
+// number of denominations
+#include <stdio.h>
+#define COINS 9
+#define MAX 20
 
-int count(int s[] , int m , int n ){
+// All denominations of Indian Currency
+int coins[COINS] = { 1, 2, 5, 10, 20,
+					50, 100, 200, 2000 };
 
-    if(n==0)
-    return 1;
-
-    if(n<0)
-    return 0 ; 
-
-    if(m<=0 && n>=0)
-    return 0 ;
-
-    return count( s , m-1 , n ) + count(s , m , n - s[m-1]);
-
-}
-
-int main()
+void findMin(int cost)
 {
+	int coinList[MAX] = { 0 };
+	int i, k = 0;
 
-    int  n , m , i;
-    int arr[100];
+	for (i = COINS - 1; i >= 0; i--) {
+		while (cost >= coins[i]) {
+			cost -= coins[i];
+			// Add coin in the list
+			coinList[k++] = coins[i];
+		}
+	}
 
-    cout<<"Enter the number of coins :";
-    cin>>m;
-
-    cout<<"Enter the Coins :";
-    for(i = 0 ; i<m ; i++){
-        cin>>arr[i];
-    }
-
-    cout<<"Enter your amount :";
-    cin>>n;
-
-    cout<< " " << count(arr , m ,n ) << " ";
-
-    return 0;
-    
+	for (i = 0; i < k; i++) {
+		// Print
+		printf("%d ", coinList[i]);
+	}
+	return;
 }
+
+int main(void)
+{
+	// input value
+	int n = 93;
+
+	printf("Following is minimal number"
+		"of change for %d: ",
+		n);
+	findMin(n);
+	return 0;
+}
+// Code by Munish Bhardwaj
