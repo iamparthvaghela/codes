@@ -1,0 +1,36 @@
+****** JAVASCRIPT **********
+
+
+== -> is for comparing two variables irrespective of their data type ( it sort of perform type casting for checking)
+=== -> it is for comparing two variable that must have same data type and the same value
+
+isNaN(variable) -> tells if the given input variable is a number or not
+
+
+
+const keyword in js
+	- If we declare a variable with const keyword
+	- We cannot reassigning the variable using = operator
+		- also we cannot redeclare the variable
+	- However if a const is an array or an object, it's properties or items can be changed
+	- Usually declare const varibles with CAPTIAL_LETTERS
+		- what this means is we are trying to change the refernce of the variable
+	- scoped variable like let :)
+	- Global varibles do not become properties of the window object, unlike var variable
+	- Need to initialize the value at the time of declaration
+	- The const declaration creates a read only reference to a value - it doesn't mean the value is immutable
+	- The objects and array declared with const keyword cannot be reassigned using = operator
+		- This would mean changing the reference 
+		- However the contents of array can still be changed using the various functions
+
+- ARRAY
+	- can consist of any number of items with any data type
+	- a particular item is referenced using index
+	- ***** extra info ********
+		- a shallow copy of an object is a copy whose properties share the same reference( point to the same underlying values as those of the source object from which the copy was made)
+		- Thus changing anything in either copy or in source object, the changes are reflected in both the object
+		--- A deep copy on the other hand in which source and copy are completely independent
+	- Js array-copy operations create shallow copies
+		- infact all standard builtin copy operations with any js objects create a shallow copy rather than deep copy
+	
+- We can also use ** for expontential

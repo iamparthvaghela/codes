@@ -1,0 +1,198 @@
+alert("Hello"); -> simply display
+prompt("What is your age");	-> for taking input 
+	
+var myname  		-> for creating a variable
+
+alert("Hello" + myname )	-> '+' symbol for concatenating string
+
+alert(1 + 2 + 4 + "Hello" + 4 + 6 + 7); 	-> 7Hello467  
+						and not "7Hello17"
+
+myname.length 			-> no brackets, and it gives length of strong
+
+name = "friendly"
+name.slice(2, 5);		-> ien
+name.slice(start, end)
+name.slice(including start, not including end) 
+remember name.slice  	-> doesn't affect the name variable but creates a new value of sliced variable
+
+
+
+- myname = pArTh
+alert(myname.toUpperCase());		-> PARTH
+remember it doens't change the original name but create a new value PARTH'
+alert(myname.toLowerCase());		-> parth
+
+- using operator is similar to C language
+- x++, x--
+- x-= h ,  	x += h, 	x *= h, 	x /= h
+
+
+
+- To create a function 
+	-function getMilk(){}
+	- getMilk();
+
+- console.log("Hello")	-> instead of showing in alert, we show it in console
+
+	
+
+
+- number = 17.68
+alert(Math.floor(number));	-> 17
+alert(Math.ceil(number));	-> 18 
+
+
+- Generating random number
+	- var n = Math.random();
+	- This function always produces a number between 0 and 0.9999(16 digits after decimal)
+
+
+- comparator (===) and (==)
+	- (===) also checks if the data type are same or not
+	- (==) don't care about data type(even convert string to number) to check whether two variables are equal or not
+	
+
+- creating an array 
+var fruits = ["apple", "mango", "banana"];
+alert(fruits[1]);	-> mango
+alert(fruits.length);	-> 3
+
+fruits.includes("apple")	-> true
+fruits.includes("cherry")	-> false
+
+fruits.push("watermelong") 	-> pushes watermelong at the end
+fruits.pop; 			-> simply removes the last element of array
+
+
+- inilne javascript 
+	<h1 script = "onload = alert('Hello');">
+
+- internal javascript	( script tag inside body)
+	<script type = "text/javascript">
+	function greeting() 
+	{
+		alert("Hello");
+	}
+	</script>
+
+- <script src = "script.js">
+
+- ***** remember to always put script tag at the end of the body
+- bcoz if we are trying to find an eleement doc.getelibyid()
+	And the element doesn't exist yet, then it can be a problem 
+
+
+- DOM ( Document Object Model)
+	- basically arranging objects of our site in a tree like structure
+	- This is known as DOM
+	- it is referred to in code as document.(something...)
+	- e.g. document.firstElementChild;
+	- e.g. document.firstElementChild.firstElementChild
+	- e.g. document.lastElementChild.lastElementChild
+
+- var heading = document.lastElementchild.firstElementChild
+	-> This creates references to an h1 tag and stores it into variable 'heading'
+	-> So when we change heading = <h2>Sup Losers!! </h2>
+	-> This change is actually reflected in web page
+
+- Can also do 
+heading.style.color = "red";	//Therefore we can not only access tags, but their attributes and values too!!
+
+
+- document.getElementsByTagName("li")	-> returns an array of all the list items
+	- Every element from start is stored in the same order in the array
+
+- document.getElementsByClassName("btn")	-> returns an array of elements having the same class name
+
+- document.getElementById("first_para")		-> returns an single element
+	- can use element.innerHTML = "changed" 	-> to change the internal text of para
+
+
+- document.querySelector("li")		-> returns the first list item element
+- document.querySelector("#first_para")	-> returns the element having the id
+
+- document.querySelector("li a"); 	-> return <a> that is inside <li>
+-document.querySelector("li.item"); 	-> when item is a class name of a list item(i.e. they are kinda at the same level
+	- In above both the difference is of space
+	- If space means hierarchical
+	- If not means at the same level 	<li class = "item"></li>
+
+- So query selector only selects the first element it founds
+- But what if we want to select all the elements of the same description?
+- document.querySelectorAll("li item"); 	-> returns an array
+
+
+- attributes in javascript are always written in camelcase
+e.g var heading = document.querySelector("h1").style.fontSize = "20px"		// And yes the value should be written in string
+
+
+
+- We can also add class to our element using 'classList' property
+	- e.g document.querySelector("h1").classlist.add("huge");		-> adds a class named huge to <h1>
+	- e.g document.querySelector("h1").classList.remove("huge");		-> removes the class named huge from <h1>
+	- e.g document.querySelector("h1").classList.toggle("huge");		-> if huge is already a class, remove it from <h1>|| and if not, then add class("huge") to <h1>
+
+
+- When we write h1.innerHTML
+	- This means that it is selecting all the code that is inside the <h1> tag
+	-e.g. <h1><strong>Hello!</strong></h1>		-> this written with innerHTML will return -> <strong>Hello!</strong>
+	- On the other hand if we used h1.textContent
+	- e.g <h1><strong>Hey</strong></h1>		-> this would return -> Hey		(i.e without any other tags or elements)
+
+
+- For changing attributes of an tag
+	- document.querySelector("tagname").attributes;		-> remember the attributes is plural
+	- document.querySelector("tagname").getAttribute("href");	-> return value of attribute href|| also the Attribute is singular
+	- document.querySelector("tagname").setAttribute("href", "www.bing.com");
+
+- document.querySelector("button").addEventListener("click", alerter) ->One important thing to remember is never use parenthesis with function
+										-> Because when we use parenthesis it straight away means function call
+	- we can also write an anonymous function
+		- document.querySelector("button").addEventListener("click", function () { alert "Heyyyyy you clicked me "; });
+
+- Higher order functions are functions that can take another function as argument		
+	
+
+- Creating objects in javascript
+	- var employee = {			-> remember the (=) sign	 
+		name : "Alex",			-> remember the comma(,) and not semicolon(;)
+		age : 35,
+		fullTime : true;
+		experience : ["wipro", "infosys", "tcs", "accenture"]
+		work : function () { alert ("I am working"); }
+			}
+
+- Creaing construct for objects
+	- remember to always start the name with CAPITAL LETTERS !!
+	- function Employee (name, age, fullTime, experience)		->remember there is no equal to sign
+	{
+	this.name = name;
+	this.age = age;
+	this.fullTime = fullTime;					-> remember the semicolon(;) and not comma (,)
+	this.experience = experience;
+	}
+
+	
+- Use the new keyword to create a object
+	- var employee1 = new Employee("parth", 19, true, ['facebook', 'google', 'comptia']);
+
+ 
+- We can add event listener so that when that event happens, we can call a function to do something
+	- button.addEventListener("click", function() { alert("Did you clicked me? "); });
+	
+- We can also have and event where we press a key, and we can apply that event listener to the entire document, so that entire document listens for that event
+	- document.addEventListener("keypress", Pressed());
+	- document.addEventListener("Keypress", Pressed(x)); 		-> here no matter what is the name of variable x , it always represents the event that caused it 
+
+
+- The Pressed function above is called callback function
+
+- Summary
+	- Whenever an event happens, an object of that event is created (eventype, key, etc..)
+	- The computer first looks whether the user has written the same event listener in his/her code or not
+	- If let's say user has set an event listener that matches the event that just occured
+	- then and only then the call back function is called
+
+	- Now, if we want the callback function can be our self defined function
+	- Or we can use anyonymous function, and pass the event object in that function

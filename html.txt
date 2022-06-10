@@ -1,0 +1,398 @@
+use websites 
+mdn 
+w3schools
+devdocs.io
+
+Nomeclature of files & folders
+	- completely in lower case
+		- some server might be case sensitive 
+	- don't use whitespaces( rather use hyphen(-) than underscore(_) )
+			- google search engine treats (-) as whitespace and not (_)
+		- some server might think that added space means two files
+		- other may put % in place of whitespace (the character code for spaces in url)
+
+- Any web dev project should look like
+	- index.html
+	- images -> folder
+		- all the images on the site
+	- styles -> folder
+		- css file
+	- scripts -> folder
+		- js files
+
+- if image in same directory
+	- image.html
+- if image in sub-directory
+	- sub-directory/image.html
+- if image in prev director
+	- ../image.html
+- use combinations of all these to traverse through directories
+														
+html - hypertext markup language
+opening tag closing tag ( content in between)
+
+- we can also write <html attr = atrrvalue > yes!!! without any double quote (if it doesn't contain ", ', `, = , <, >)
+	- but not advisable 
+
+- Nesting of elements is also possible
+
+- <!DOCTYPE html>
+	- around 1991/ 92 doctypes were meant to act as a links to a set or rules that a html page needs to be followed
+		- to be considered as good html
+		- automatic error checking !!
+	- today no use, maybe to specify the version of html
+- <html>
+	- it encloses all the content of your entire page
+		-also known as root element
+
+- <head>
+	- all info about page that you don't want the user of the page to see
+
+- <title>
+	- name displayed on tab
+
+- <body>
+	- content of your page visible to user
+
+<h1> to <h6> high to low
+	- don't just use this to increase size of a text in your website
+		- bcoz this is the thing that is read in screen reader first as heading
+		- also the heading is used to index your site on search engines( rank  ( so do it carefully)
+
+
+<br> for a new line
+
+<hr size = "3" noshade >
+
+
+<head>
+-contains title and meta data about the web page
+	- meta charset  = "UTF-8" 	// page is encoded using UTF-8
+	- meta name = "description" content = "free html tut" 	// for search engines		// also shown on search page as a description
+	- meta name = "keywords"
+	- meta name = "author"
+
+- use <em> tag rather than <i> tag
+	-because <em> stresses the text while <i> only makes the appearance of text to be slanted
+
+- use <b> to make the text bold
+	- use <strong> rather than <b> for the same reason
+
+-use <p> to create a paragraph that starts from a new line
+
+- <ul>		--> for unordered list
+- <ol start = "7" type = "i">		--> for ordered list 
+- <li> for list item
+	- we can also have nested list 
+
+-use <img src = "link" alt = "alternative text if image is not found" height and width >
+	- alt text for
+		- visually impaired ppl
+		- if image cannot be loaded
+	- while picking image from chrome use-> tools, license -> creative commons license
+
+- use <a href = "link"> for going to another link 
+	-it'll be purple if visited and blue if unvisited
+	- try to make sure that "link" contains http:// or https:// part, otherwise might produce unexpected results
+	- href -> hyptertext referene
+- <table>
+	<thead>		// for identifying the column names during styling or scrolling
+	<tbody>		//  ofc the main body of the table
+	<tfoot>		// below the body part
+	- <tr> for creating a row 
+	- <th> for table head 		// deafult is bold
+	- <td> for table data 		// not bold
+
+- <form disabled>		// basically sends the name = value pair for all input elements present inside
+	- to take input from user
+
+	-<input type = "button">		// provide an action using javascript
+		-<input type = "button" value = "click me"> 		// the text displayed on button
+		-<input type = "button" disabled>		// disables the button
+		-<input type = "button" accesskey = "k"> 	//press alt + s to trigger the button 	// diff for diff. browser and machines
+								// generally advised not to use accesskeys
+								// if more than one values are provided, then the first working value will be considered
+	-<fieldset> is used to group various parts of a form-->for styling purposes
+		- <legend> is used to label those group
+		- gets a border type around the fieldset elements
+		- <fieldset disabled> --> all the contents inside are no longer editable and cannot be submitted
+			-the form elements inside legend won't be disabled*******
+		- <fieldset form = "form_id"> 	For some reason this isn't seem to work
+						-- basically to link fieldset to a form in other part of the document
+
+	- <element autofocus> 		// the element to focus on when the page first reloads
+					// if more than one element is made autofocus the first element will be focused
+					// it isn't just for form but can also be applied for other things
+					// carefully apply because may lead to scrolling of page on loading first
+					// may lead to opening screen keyboard on touch devices
+	
+	-<button> and not <input type = "button">
+		- is by default submit when no type is mentioned
+		- because using BUTTON allows more rendering capability(adding images and text and paragraphs in between the button tags
+		<button type = "submit" form = "id_of_form">		// for submitting a form of given id	//similar to fieldset linking
+		- <buttont type = "reset">
+		- <button type = "button"> 	// an event handler code is needed 
+		- <button type = "submit">	// be careful to mention type because by default it is submit
+
+
+	- <label> for associating an input element with a text
+		- clicking on label will focus on the input field(improves focusing on devices with small screen)
+		- helps assistive technology user(basically disabled people)		// by reading out the label text
+		- <input id = "xyz">	&& 	<label for = "xyz">
+		- Nested labelling
+			<label> Are you above 18? 		// if still want to put 'for' attribute, it must be same as the conatined input element
+				<input type = "checkbox">
+			</label>
+		
+	- <div> --> doesn't do much in pure html, but makes styling easier in css
+
+	- <input type = "checkbox" name = "abc" value = "xyz"  checked OR unchecked>		--> for either checking or unchecking
+		- name = value --> this pair is sent when submit button is clicked
+			- no pair is sent when unchecked or in indeterminate form
+			- if no value is mentioned, then 'on' is sent by default to the server
+		- <input type = "checkbox" checked> --> makes the default value checked			// doesn't change when the user interacts with checkbox, just the inital state of checkbox
+		- 'indeterminate' is an attribute with not checked or unchecked but no browser supports it in html, although it can be set up via javaScript
+			- is represented by a square box with - sign
+			- for nested checkboxs
+		- use <fieldset> for handling multiple checkboxes with same name i.e multiple choices 
+			- use same name for all checkbox
+	*****************
+	Does submit button outside fieldset submits input data inside fieldset? Bcoz it isn't working for me
+	****************
+	
+	-<input type = "color" value = "#ffffff"> 	--> strictly in hexadecimal format
+		- default value is '#000000' i.e. black
+	
+	- <input type = "date">
+		- value is of type DOMstring of type 'YYYY-MM-DD'
+		- min = 'YYYY-MM-DD' and max = 'YYYY-MM-DD' is the range within which the date must be entered
+		- step = "days" --> basicaly only allow dates after "days"	
+		-e.g when step = 5 and value = "5 june", then next selectable value will be 10 june and 15 june and so on 
+			- when user enters an invalid date, it is rounded off to the nearest vaild date, and to positive side if equal from back and front
+
+	- <input type = "datetime-local">
+		- this may not necessarily be user's local date and time
+		- 'YYYY-MM-DDThh:mm'  	--> value is of the form
+		- min , max for range of date and time
+		- step  for stepping time in seconds 
+			- when invalid text is entered by user, then rounded to nearest valid value
+		- generally use javascript's jquery date picker and jquery timer plugin 
+			- because of cross compatibility issues && regionwise change in this text pattern(e.g. mm.dd.yyyy, dd-mm-yyyy)
+			- use pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}" 	// for internet explorer where this might not work
+			- advised to use and date and time as separate picker
+
+	- <input type = "email">
+		- use multiple attribute to get multiple email id's separated by commas
+			- when multiple attribute is used, even if no no email is entered, it is completely valid
+		- either empty, OR  abc@xyz
+		- use <input type = "email" pattern = ".+@gmail\.com">
+		- use title attribute around  your input element, so when mouse hovers over it, it gives xtra info about the input type 
+		- apparently we can also use placeholder = "123-456-789" for showing something in light grey color in input field
+		- a readonly attribute can be used, when we want user to enter data once, or don't allow to enter until a period of time	
+			- mostly implemented using javascript
+		- maxlength and minlength in "num of characters"
+		- use size = "no. of characters" --> to specify the size of the input box
+
+	-  <form action = "mailto:tempmail@gmail.com" method="post" enctype="text/plain" >		// send a mail of name = value type to temp@gmail.com
+		-passes the name and value attributes of the form 
+
+	- <datalist> tag, is basically used to recommend some predefined options in input element
+	- the list attribute of <input> element must be same as id of <datalist>
+		-<datalist id = "temp_id">
+			- <option value = "xyz"> ......
+		- <input type = "email" list = "temp_id">
+	
+	
+	- <input type = "file">
+		 - accept = ".doc, .docx, application/msword"		// accept various file type
+		- capture = " "
+			- user --> user facing camera or microphone
+			- environment --> outward facing camera and/or microphone should be used
+			- capture="user" accept="audio/*"
+			- capture = "environment" accept = "image/*"
+			- capture = "user" accept = "video/*"
+				- opens file explorer on pc, but works best in mobile devices
+
+	- <input type = "hidden"
+		- basically the value is unseen by user, when the page loads, but using developer tools the value can be edited
+			- so don't depend on it for improving security
+		
+	- <input type = "image">	
+		- basically a graphical submit button
+		- has similar attributes to <img>
+		- < src = "https:xyz.com">
+		- < alt = "this is alternative text">
+		- Of course need and event handler code
+
+	- < input type = "month"
+		- take a month and a year as input
+		- YYYY-MM
+		- list can be used for suggestion
+			- any option in <datalist> that is invaild is not shown in suggestions
+		- max and min 
+		- readonly
+		- step in months 
+		- only chrome opera and edge supports it currently
+
+	- <input type = "number"
+		- select only numerical value
+		- list , max, min, step, placeholder, readonly
+
+	- <input type = "password"
+		- hide while entering the password
+		- minlength and maxlength
+		- pattern is very important 
+		- title is very helpful for telling user the numbers and type of characters to enter
+		- placeholder can also be very helpful 
+		- autocomplete = ""
+			- autocomplete = "new-password" --> for sign up form or resetting the password
+			- autocomplete = "current-password" --> for sign in form, and browser suggests the previously entered password if any 
+			- autcomplete = "on" --> suggesting password
+			- autcomplete = "off" --> no suggestion 
+		***********************
+		- I didn't understood the difference though
+		*************************
+	
+
+	- <input type = "radio">
+	- radio button
+	- try to write all the buttons inside fieldset element
+	- <Input type = "radio" name = "common_name" value = "radion_button1" >
+	- <input type = "radio" name = "common_name" value = "radio_button2" >
+	- same name different value
+	- when all are uncheked nothing is sent to the server
+	- use label to name the radio buttons
+	- if no value is written then name = "on" will be transmitted to the server
+	- checked is used to make the button by default checked
+	- if more than one radio button is applied the attribute "checked "then the last radio button is checked finally
+		- this is because the upcoming checked radio buttons unchecks the previous radio button 
+
+
+	- <input type = "range">
+		- basically allows user to enter a value using a sliding bar
+		- the exact value isn't shown to user, but it is recorded
+		 -Do not use for accurate input taking 
+		- max = "10" 		// default is 100
+		- min = "2"		// default is 0
+		- step = "3" 		// slider will move 3 steps
+			- step = "any" means we don't care about the exact stepping 
+			- a continous movement of slider 
+		- value = "18" 		// the starting position of the slider
+			- default value is average of min and max (i.e. midway between min and max)j
+		- list can also be used // strange****
+		- e.g. volume, brightness, transparency, visibility in gaming, length for password
+		- using hash marks on range button
+			- list = "hash_marks"
+			- <datalist id = "hash_marks">
+				- <option value = "10" label = "10%"	// currently no browser supports label 
+
+	- <input type = "reset">
+		- to reset the entire form
+		- value = "To be displayed on the button"
+		- try to avoid it, bcoz its just gonna frustrate user who click it by mistake
+
+	- <input type = "search">
+		- to search something ofcourse
+		- difference between textfield and this is cross button to clear the search area
+			- can also use 'esc' to clear the search area
+		- generally we do not provide label for search bar, right? We generally use icons for this purpose
+			- instead use placeholder
+			- this created problem for screen reader
+			- to solve this problem 
+		- minlength, maxlength, size, pattern, list, autocorrect["on" (or) "off"](based on previous inputs or browser stored)
+		- <form role = " this is a search form">	// learn more about this on wai-aria
+			- <input type = "..." aria-label = "this text will be read by screen reader">
+			- non visual equivalent to label 
+		- spellcheck(underline invaild words with red) 
+			- spellcheck = "true" (or) "false"
+		- < ... incremental >
+			- allows real time updation of search recommendation
+			- otherwise user needs to press enter key explicitly for searching
+		- <... autcomplete = "on" (or) "off"
+			- browser can autocorrect based on previous inputs
+			- there are lot of other values that it can take(https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete)
+	
+	- <input type = "tel">
+		- similar to "text" but can be useful for mobile users
+		- value, list, maxlength, minlength, pattern, placeholder
+
+	- <input type = "text">
+		- list, maxlength, minlength, pattern, placeholder, size, readonly, spellcheck, autocorrect
+
+	
+	- <input type = "time"
+		- value = "hh:mm"
+		- from 14:00 to 1:00 means time runs from 2:00pm to 1:00 (i.e. in circular pattern)
+		- list, max, min, step in seconds (default is 60s or 1 minute), 
+
+	- <input type = "url">	
+		- just verifies the site 
+			- abc + '://' + xyz
+			- abc.com || abc.in || abc.gov || abc.org (that is the valid domain names) 
+		- list, maxlength, minlenght, size, pattern, spellchedk = "true" || "false" 
+
+	- <input type = "week">
+		- from week 1 to 52 (or) 53
+		- value = "2017-W22"
+		- max, min, step ( default value = 1 week) 
+
+	- <input type = "datetime"
+		- Most browsers most probabl removed it 
+
+	- <input type = "submit">
+		-  does the same job as <button type = "submit"
+		- but similar to <input type = "button"> it doesn't have rendering capabilities
+
+
+
+	- <link> : The external resource link element
+		- The <link> HTML element specifies relationships between the current document and an external resource
+		- mostly to link stylesheets and favicons (rel = "stylesheets", rel = "icon" )
+
+	- the rel attribute defines the type of relationship between a linked resource and current document
+		- can be used on <link>, <a>, <area>, <form>
+		- the value of rel must be present in one of the 
+			-  IANA link relation registry 
+			-  HTML Living Standard
+			-  existing-rel-values page
+		- if value is not from above w3c validator will generate a warning
+		- e.g. alternate, author, icon, license, stylesheet, etc.  https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel
+		- combination can also be used ( separated by whitespace0
+			- <link rel = "alternate stylesheet" href = "other-file.css" title = "high-contrast">
+
+- all html attribute values are case insensitive
+
+
+- Object element designed to embed plugins
+
+- <section> 
+	- basically to divide our page into sections (heading, introduction, contact me, etc)
+
+- <article>
+	- to write article on something and it can be moved from one website to another 
+
+
+- <header> for some introductory content
+
+- <footer> 
+	- authorship info, contact me info, copyright info, back to top ,etc
+	- can have more than one footer
+
+- <figure> 
+	- for associating a photo, illustration 
+	- and <figcaption> for captioning that 
+- <meter> for showing low and high as color of red or green
+
+- <progress>
+	- just same as meter 
+
+- <video controls>
+	- <source src = "source of the video">
+
+- <audio controls>
+	- source src = "source of the audio" type = "audio.mp3">
+
+- <iframe src = "youtube embeded link" width and height is something>
+
+    <svg>
+        <circle cx = "50" cy = "50" r  = "40" stroke = "rebeccapurple" stroke-width = "10" fill = "pink"></circle>
